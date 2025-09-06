@@ -1,11 +1,168 @@
 {
-	"description": "My hobby projects, most of them are Next.js apps deployed to Vercel.",
-	"githubUsername": "octocat",
-	"avatarUrl": "",
-	"displayName": "",
-	"email": "",
-	"projects": {
-		"blacklist": [],
-		"heroNames": []
-	}
+    "githubUsername": "HarehKen",
+    "avatarUrl": "",
+    "displayName": "Hareshwar",
+    "email": "iitzharesh@gmail.com",
+    "linkedin": "https://www.linkedin.com/in/hareshwar-nv-354b1231a/",
+    "bio": {
+        "intro": "I'm a passionate full-stack developer who loves creating innovative web applications and exploring cutting-edge technologies.",
+        "tagline": "Building the future, one line of code at a time",
+        "aboutMe": "With a strong foundation in modern web technologies, I enjoy turning ideas into reality through clean, efficient code. I'm always eager to learn new technologies and tackle challenging problems.",
+        "currentFocus": "Currently focusing on React, Next.js, and modern web development practices.",
+        "interests": [
+            "Web Development",
+            "Open Source",
+            "UI/UX Design",
+            "Cloud Technologies",
+            "Machine Learning"
+        ]
+    },
+    "skills": {
+        "languages": [
+            "Python",
+            "C",
+            "C++",
+            "Java",
+            "JavaScript",
+            "HTML5",
+            "CSS3",
+            "Verilog"
+        ],
+        "frontend": [
+            "React",
+            "Next.js",
+            "TypeScript",
+            "Tailwind CSS",
+            "JavaScript",
+            "HTML/CSS"
+        ],
+        "backend": [
+            "Node.js",
+            "Python",
+            "Express.js",
+            "MongoDB",
+            "API Development"
+        ],
+        "tools": [
+            "Git",
+            "Docker",
+            "Vercel",
+            "VS Code",
+            "TensorFlow",
+            "Jupyter",
+            "MySQL",
+            "Arduino",
+            "LTspice",
+            "MATLAB",
+            "Intel Quartus Prime",
+            "ModelSim",
+            "TCAD"
+        ],
+        "learning": [
+            "AWS",
+            "GraphQL",
+            "Rust",
+            "Kubernetes",
+            "Web3"
+        ]
+    },
+    "experience": [
+        {
+            "title": "BreatheEasy",
+            "company": "Hackathon Project",
+            "duration": "2025",
+            "description": "Created an generative web AI application which gives medicinal advise based on the collected data using external hardware for chronic disease.",
+            "technologies": [
+                "TypeScript",
+                "Next.js",
+                "Tailwind CSS",
+                "Gemini"
+            ]
+        },
+        {
+            "title": "Computer Vision Developer",
+            "company": "Personal Project",
+            "duration": "2025",
+            "description": "Created an interactive Doom game controlled entirely through hand tracking gestures using computer vision techniques.",
+            "technologies": [
+                "Python",
+                "OpenCV",
+                "MediaPipe",
+                "Pygame",
+                "Hand Tracking"
+            ]
+        },
+        {
+            "title": "Machine Learning Engineer",
+            "company": "CNN model that detects bad leaf spots",
+            "duration": "2024",
+            "description": "Designed and implemented a Convolutional Neural Network model for image classification and pattern recognition tasks.",
+            "technologies": [
+                "Python",
+                "TensorFlow",
+                "Keras",
+                "NumPy",
+                "Pandas"
+            ]
+        },
+        {
+            "title": "Full Stack Developer",
+            "company": "Face Detection Attendence Tool",
+            "duration": "2023 - 2024",
+            "description": "Developed a face detection attendance system with real-time recognition capabilities and database integration.",
+            "technologies": [
+                "Node.js",
+                "Express.js",
+                "MySQL",
+                "Computer Vision"
+            ]
+        },
+        {
+            "title": "Web Developer",
+            "company": "Website for my Father's company",
+            "duration": "2023",
+            "description": "Built a responsive website from scratch using core web technologies, focusing on clean design and user experience.",
+            "technologies": [
+                "HTML",
+                "CSS",
+                "JavaScript"
+            ]
+        },
+        {
+            "title": "OCR Developer",
+            "company": "Personal Project",
+            "duration": "2022",
+            "description": "Developed an Optical Character Recognition system for extracting and digitizing text from images and scanned documents.",
+            "technologies": [
+                "Python",
+                "Tesseract",
+                "OpenCV",
+                "PIL",
+                "Text Processing"
+            ]
+        }
+    ],
+    "stats": {
+        "projectsCompleted": 6,
+        "yearsOfExperience": 3,
+        "technologiesUsed": 15,
+        "openSourceContributions": 10
+    },
+    "projects": {
+        "blacklist": [],
+        "heroNames": [],
+        "featured": [
+            {
+                "name": "Portfolio Website",
+                "description": "A modern, responsive portfolio website built with Next.js and Tailwind CSS",
+                "technologies": [
+                    "Next.js",
+                    "Tailwind CSS",
+                    "TypeScript"
+                ],
+                "link": "https://github.com/HarehKen/portfolio",
+                "demo": "https://yourportfolio.vercel.app"
+            }
+        ]
+    }
 }

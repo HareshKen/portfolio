@@ -16,7 +16,7 @@ export const Article = async ({ project }) => {
     const isGitHubUser = process.env.GITHUB_USERNAME === project.owner.login;
     if (isGitHubUser) {
         const [{ todayUniques, sumUniques } = {}, openAlertsBySeverity, copilotPRCount] = await Promise.all([
-            getTrafficPageViews(project.owner.login, project.name), 
+            getTrafficPageViews(project.owner.login, project.name),
             getDependabotAlerts(project.owner.login, project.name),
             getCopilotPRs(project.owner.login, project.name)
         ]);
@@ -30,7 +30,7 @@ export const Article = async ({ project }) => {
         const alertTitle = alertCountTotal > 0 ? `Open Dependabot alerts: ` + (JSON.stringify(openAlertsBySeverity)) : "No open Dependabot alerts.";
 
         alerts = <span title={alertTitle} className="flex items-center gap-1">
-            <GoDependabot className="w-4 h-4 danger" fill={alertColor} />{" "}            
+            <GoDependabot className="w-4 h-4 danger" fill={alertColor} />{" "}
             {Intl.NumberFormat("en-US", { notation: "compact" }).format(alertCountTotal)}
         </span>;
 
@@ -61,7 +61,7 @@ export const Article = async ({ project }) => {
                 </span>
             </div>
             
-            <Link href={appLink}>
+            <Link href={appLink} target="_blank" rel="noopener noreferrer">
                 <h2 className="z-20 text-xl font-medium duration-1000 lg:text-3xl text-zinc-200 group-hover:text-white font-display cursor-pointer" title={`Click to view the ${project.homepage ? 'app' : 'repo'}.`}>
                     <span className="bg-linear-to-r from-purple-400 to-blue-500 hover:from-pink-500 hover:to-yellow-500 text-transparent bg-clip-text">
                         {project.name}
@@ -82,7 +82,8 @@ export const Article = async ({ project }) => {
             </div>
             <div className="flex justify-between gap-2 items-center float-right mt-2 border-t-2 border-gray-700 border-opacity-50">
                 <span className="text-zinc-500 text-xs align-middle flex items-center gap-1" title="GitHub repository link.">
-                    <FaGithub className="w-4 h-4" /><Link href={project.html_url} className="hover:text-blue-800">{project.name}</Link>
+                    <FaGithub className="w-4 h-4" />
+                    <Link href={project.html_url} target="_blank" rel="noopener noreferrer" className="hover:text-blue-800">{project.name}</Link>
                 </span>
             </div>
         </article>
