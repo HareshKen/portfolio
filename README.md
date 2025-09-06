@@ -1,6 +1,4 @@
-# 🔗 [hareshwar-portfolio.vercel.app](https://hareshwar-portfolio.vercel.app)  [![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/import?repository-url=https%3A%2F%2Fgithub.com%2FHarehKen%2Fportfolio&env=GH_TOKEN,VC_TOKEN)
-
-My personal portfolio website, built with [Next.js](https://nextjs.org/), [Tailwind CSS](https://tailwindcss.com/) and deployed to [Vercel](https://vercel.com/). Showcasing my journey as a full-stack developer with expertise in web development, machine learning, and computer vision.
+My personal portfolio website, built with [Next.js](https://nextjs.org/), [Tailwind CSS](https://tailwindcss.com/). Showcasing my journey as a full-stack developer with expertise in web development, machine learning, and computer vision.
 
 It is designed as a **modern, responsive portfolio template** that can be easily customized for other developers. Data about user and projects are managed through a simple JSON configuration file and GitHub API integration.
 
