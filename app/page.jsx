@@ -1,77 +1,61 @@
+// app/page.jsx
+
 import Link from "next/link";
 import Image from "next/image";
 import React, { Suspense } from "react";
 import data from "../data.json";
 import { RecentActivity } from "./components/recent-activity";
-import { getUser, getSocialAccounts } from "./data";
-import LoadingIndicator from "./components/loading-indicator";
+import { getUser } from "./data"; // We only need getUser here initially
 import { Card } from "./components/card";
 import ProjectsComponent from "./projects/projects";
-
-// Import our new enhanced components
 import { UserText, SkillsSection, InterestsSection, ExperienceSection } from "./components/bio-components";
-
 import { FaGithub, FaLinkedin } from "react-icons/fa";
-import { GoMail, GoPerson } from "react-icons/go";
+import { GoMail } from "react-icons/go";
 import { ScrollToTopButton } from "./components/ScrollToTopButton";
 
 const navigation = [
-    { name: "About", href: "#about" },   // New about section
-    { name: "Skills", href: "#skills" },   // New skills section
+    { name: "About", href: "#about" },
+    { name: "Skills", href: "#skills" },
     { name: "Projects", href: "#projects" },
     { name: "Contact", href: "#contact" },
 ];
 
-export default async function Home(props) {
-    const searchParams = await props.searchParams;
-    return <LandingComponent searchParams={searchParams} />;
-}
+// Re-usable UserIcon component, no changes needed here.
+const UserIcon = async ({ user }) => (
+    <Image
+        alt="👨‍💻"
+        width={100}
+        height={100}
+        src={user.avatar_url || data.avatarUrl}
+        className="rounded-full mx-4 ring-4 ring-white/20 dark:ring-zinc-800/50 shadow-xl hover:scale-110 transition-all duration-300 flex-shrink-0"
+    />
+);
 
-const UserIcon = async ({ promise }) => {
-    const user = await promise;
-    return (
-        <Image
-            alt="👨‍💻"
-            width={100}
-            height={100}
-            src={user.avatar_url || data.avatarUrl}
-            className="rounded-full mx-4 ring-4 ring-white/20 dark:ring-zinc-800/50 shadow-xl hover:scale-110 transition-all duration-300 flex-shrink-0"
-        />
-    );
-};
+export default async function Home() {
+    // Statically determine the username at build time
+    const username = process.env.GITHUB_USERNAME || data.githubUsername;
 
-const LandingComponent = async ({ searchParams: { customUsername } }) => {
-    const username =
-        customUsername || process.env.GITHUB_USERNAME || data.githubUsername;
-
-    // Fetch GitHub profile + socials
-    const userData = getUser(username);
-    const socialsData = getSocialAccounts(username);
-    const [user, githubSocials] = await Promise.all([userData, socialsData]);
-
-    const promise = Promise.resolve(user);
+    // Fetch GitHub profile data at build time. This will be cached.
+    const user = await getUser(username);
 
     // Build contact info
     const email = user.email || data.email;
     const contacts = [];
-
     if (email) {
         contacts.push({
             icon: <GoMail size={20} />,
-            href: `https://mail.google.com/mail/?view=cm&fs=1&to=${email}`,
+            // Updated to use Gmail compose link that opens in new tab
+            href: `https://mail.google.com/mail/?view=cm&fs=1&to=${email}&su=Hello%20${data.displayName || username}&body=Hi%20${data.displayName || username},%0D%0A%0D%0AI%20found%20your%20portfolio%20and%20would%20like%20to%20get%20in%20touch.%0D%0A%0D%0ABest%20regards`,
             label: "Email",
             handle: email,
-            className: "sm:rotate-45 md:rotate-0 lg:rotate-45 xl:rotate-0",
         });
     }
-
     contacts.push({
         icon: <FaGithub size={20} />,
         href: "https://github.com/" + username,
         label: "Github",
         handle: username,
     });
-
     if (data.linkedin) {
         contacts.push({
             icon: <FaLinkedin size={20} />,
@@ -80,8 +64,6 @@ const LandingComponent = async ({ searchParams: { customUsername } }) => {
             handle: data.linkedin.split("/").pop(),
         });
     }
-
-    // Add additional social links from data.json
 
     return (
         <div className="flex flex-col items-center justify-center w-full min-h-screen overflow-x-hidden bg-gradient-to-tl from-white via-zinc-50/50 to-white dark:from-black dark:via-zinc-900/50 dark:to-black transition-colors duration-500">
@@ -111,7 +93,7 @@ const LandingComponent = async ({ searchParams: { customUsername } }) => {
                 <div className="flex items-center justify-center z-10 text-4xl hover:scale-105 text-transparent duration-1000 cursor-default text-edge-outline animate-title font-display sm:text-6xl md:text-9xl bg-clip-text bg-gradient-to-r from-black via-zinc-700 to-black dark:from-white dark:via-zinc-300 dark:to-white p-5 transition-all max-w-full overflow-hidden">
                     <span className="truncate">{username}</span>
                     <Suspense fallback={<div className="w-16 h-16 sm:w-20 sm:h-20 md:w-24 md:h-24 bg-zinc-200 dark:bg-zinc-800 rounded-full animate-pulse ml-4 flex-shrink-0"></div>}>
-                        <UserIcon promise={promise} />
+                        <UserIcon user={user} />
                     </Suspense>
                 </div>
             </div>
@@ -123,12 +105,8 @@ const LandingComponent = async ({ searchParams: { customUsername } }) => {
                 <div className="max-w-6xl mx-auto">
                     <div className="text-center animate-fade-in">
                         <h2 className="text-lg text-zinc-600 dark:text-zinc-400 transition-colors">
-                            <Suspense fallback={
-                                <div className="w-full min-h-96 flex items-center justify-center">
-                                    <div className="loading-shimmer w-full h-32 rounded-lg"></div>
-                                </div>
-                            }>
-                                <UserText promise={promise} />
+                            <Suspense fallback={<div className="loading-shimmer w-full h-32 rounded-lg"></div>}>
+                                <UserText promise={Promise.resolve(user)} />
                                 <InterestsSection />
                             </Suspense>
                         </h2>
@@ -139,11 +117,7 @@ const LandingComponent = async ({ searchParams: { customUsername } }) => {
             {/* SKILLS SECTION */}
             <section id="skills" className="w-full py-20 px-6 bg-gradient-to-b from-transparent via-zinc-50/50 to-transparent dark:via-zinc-900/50">
                 <div className="max-w-6xl mx-auto">
-                    <Suspense fallback={
-                        <div className="w-full min-h-96 flex items-center justify-center">
-                            <div className="loading-shimmer w-full h-64 rounded-lg"></div>
-                        </div>
-                    }>
+                    <Suspense fallback={<div className="loading-shimmer w-full h-64 rounded-lg"></div>}>
                         <SkillsSection />
                     </Suspense>
                 </div>
@@ -153,11 +127,7 @@ const LandingComponent = async ({ searchParams: { customUsername } }) => {
             {data.experience && data.experience.length > 0 && (
                 <section id="experience" className="w-full py-20 px-6">
                     <div className="max-w-6xl mx-auto">
-                        <Suspense fallback={
-                            <div className="w-full min-h-96 flex items-center justify-center">
-                                <div className="loading-shimmer w-full h-64 rounded-lg"></div>
-                            </div>
-                        }>
+                        <Suspense fallback={<div className="loading-shimmer w-full h-64 rounded-lg"></div>}>
                             <ExperienceSection />
                         </Suspense>
                     </div>
@@ -166,16 +136,12 @@ const LandingComponent = async ({ searchParams: { customUsername } }) => {
 
             {/* RECENT ACTIVITY */}
             <section className="w-full py-12 px-6">
-                <div className="max-w-4xl mx-auto text-center">
-                    <Suspense fallback={
-                        <div className="w-full h-32 flex items-center justify-center">
-                            <div className="loading-shimmer w-full h-24 rounded-lg"></div>
-                        </div>
-                    }>
-                        <RecentActivity username={username} />
-                    </Suspense>
-                </div>
-            </section>
+                 <div className="max-w-4xl mx-auto text-center">
+                     <Suspense fallback={<div className="loading-shimmer w-full h-24 rounded-lg"></div>}>
+                         <RecentActivity username={username} />
+                     </Suspense>
+                 </div>
+             </section>
 
             {/* PROJECTS SECTION */}
             <section
@@ -188,7 +154,7 @@ const LandingComponent = async ({ searchParams: { customUsername } }) => {
                             Projects
                         </h2>
                         <p className="mt-4 text-zinc-700 dark:text-zinc-400 transition-colors animate-fade-in" style={{ animationDelay: '0.2s' }}>
-                            {customUsername ? `${customUsername}'s projects` : data.description}
+                            {data.description}
                         </p>
                     </div>
                     <Suspense fallback={<div className="text-lg text-zinc-600 dark:text-zinc-500 text-center py-12">Loading projects...</div>}>
@@ -202,17 +168,18 @@ const LandingComponent = async ({ searchParams: { customUsername } }) => {
                 id="contact"
                 className="w-full bg-gradient-to-tl from-zinc-100/0 via-zinc-200/50 to-zinc-100/0 dark:from-zinc-900/0 dark:via-zinc-900 dark:to-zinc-900/0 py-20 transition-colors duration-500"
             >
-                <div className="container flex items-center justify-center px-4 mx-auto">
+                 <div className="container flex items-center justify-center px-4 mx-auto">
                     <div className="max-w-4xl w-full">
-                        <h2 className="text-3xl font-bold tracking-tight text-zinc-900 dark:text-zinc-100 sm:text-4xl text-center mb-16 animate-slide-up">
+                         <h2 className="text-3xl font-bold tracking-tight text-zinc-900 dark:text-zinc-100 sm:text-4xl text-center mb-16 animate-slide-up">
                             Get In Touch
-                        </h2>
+                         </h2>
                         <div className="grid w-full grid-cols-1 gap-6 md:grid-cols-3">
                             {contacts.map((s, index) => (
-                                <Card key={s.label} className="w-full h-full">
+                                <Card key={s.label}>
                                     <Link
                                         href={s.href}
                                         target="_blank"
+                                        rel="noopener noreferrer"
                                         className="p-6 relative flex flex-col items-center justify-center gap-6 duration-700 group md:gap-8 md:py-12 hover-lift h-full min-h-[280px]"
                                         style={{ animationDelay: `${index * 0.1}s` }}
                                     >
@@ -246,4 +213,4 @@ const LandingComponent = async ({ searchParams: { customUsername } }) => {
             <ScrollToTopButton />
         </div>
     );
-};
+}

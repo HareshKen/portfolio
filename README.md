@@ -4,10 +4,9 @@ It is designed as a **modern, responsive portfolio template** that can be easily
 
 ## Tech Stack
 - **Framework**: [Next.js](https://nextjs.org/)
-- **Deployment**: [Vercel](https://vercel.com)
 - **Styling**: [Tailwind CSS](https://tailwindcss.com)
 - **Icons**: [Lucide React](https://lucide.dev/)
-- **Data Management**: JSON configuration with GitHub API integration
+- **Data Management**: JSON configuration
 
 ## Portfolio Features
 
@@ -34,11 +33,6 @@ The portfolio showcases comprehensive information across multiple sections:
   - OCR text detection systems (Tesseract, Python)
   - AI-powered health applications (Next.js, TypeScript, Gemini)
 
-### GitHub Integration (Optional)
-- **Repository information** from GitHub API
-- **Project analytics** and deployment status
-- **Automated project detection** and categorization
-
 ### Design Features
 - **Glassmorphism UI** with backdrop blur effects
 - **Dark/Light mode** support
@@ -51,16 +45,6 @@ The portfolio showcases comprehensive information across multiple sections:
 ```sh
 git clone https://github.com/HarehKen/portfolio.git
 cd portfolio
-```
-
-### Environment Variables
-Create a `.env.local` file:
-```sh
-# Optional: For GitHub API integration
-GH_TOKEN=YOUR_GITHUB_TOKEN
-
-# Optional: For Vercel project information
-VC_TOKEN=YOUR_VERCEL_TOKEN
 ```
 
 Then install dependencies and run the development server:

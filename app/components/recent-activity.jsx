@@ -1,75 +1,87 @@
-import { getRecentUserActivity } from "../data";
+// app/components/recent-activity.jsx - Updated for static data
+import data from "../../data.json";
 
 export const RecentActivity = async ({ username }) => {
+    // Use static activity data instead of API calls
+    const activityData = data.recentActivity;
+    
+    // If we have a summary, use it directly
+    if (activityData.summary) {
+        return (
+            <div className="text-center space-y-4">
+                <div className="text-sm text-zinc-600 dark:text-zinc-400">
+                    {activityData.summary}
+                </div>
+                
+                {/* Optional: Show detailed stats */}
+                {activityData.details && (
+                    <div className="grid grid-cols-2 md:grid-cols-4 gap-4 max-w-2xl mx-auto mt-6">
+                        <div className="text-center p-3 bg-white/30 dark:bg-zinc-800/30 rounded-lg backdrop-blur-sm border border-zinc-200/30 dark:border-zinc-700/30">
+                            <div className="text-xl font-bold text-blue-600 dark:text-blue-400">
+                                {activityData.details.commits}
+                            </div>
+                            <div className="text-xs text-zinc-600 dark:text-zinc-400">Commits</div>
+                        </div>
+                        <div className="text-center p-3 bg-white/30 dark:bg-zinc-800/30 rounded-lg backdrop-blur-sm border border-zinc-200/30 dark:border-zinc-700/30">
+                            <div className="text-xl font-bold text-green-600 dark:text-green-400">
+                                {activityData.details.prsOpened}
+                            </div>
+                            <div className="text-xs text-zinc-600 dark:text-zinc-400">PRs Opened</div>
+                        </div>
+                        <div className="text-center p-3 bg-white/30 dark:bg-zinc-800/30 rounded-lg backdrop-blur-sm border border-zinc-200/30 dark:border-zinc-700/30">
+                            <div className="text-xl font-bold text-purple-600 dark:text-purple-400">
+                                {activityData.details.prsReviewed}
+                            </div>
+                            <div className="text-xs text-zinc-600 dark:text-zinc-400">PRs Reviewed</div>
+                        </div>
+                        <div className="text-center p-3 bg-white/30 dark:bg-zinc-800/30 rounded-lg backdrop-blur-sm border border-zinc-200/30 dark:border-zinc-700/30">
+                            <div className="text-xl font-bold text-orange-600 dark:text-orange-400">
+                                {activityData.details.repositories}
+                            </div>
+                            <div className="text-xs text-zinc-600 dark:text-zinc-400">Repositories</div>
+                        </div>
+                    </div>
+                )}
+            </div>
+        );
+    }
 
-    const recentUserActivity = await getRecentUserActivity(username);
-    const activitySummary = recentUserActivity.reduce((acc, activity) => {
-
-        if (activity.type === 'PushEvent') {
-            acc.commits = acc.commits || 0;
-            acc.commits += activity.payload.size;
-        } else if (activity.type === 'PullRequestReviewEvent') {
-            acc.reviews = acc.reviews || 0;
-            acc.reviews++;
-        } else if (activity.type === 'IssueCommentEvent') {
-            acc.commentsCreated = acc.commentsCreated || 0;
-            acc.commentsCreated += activity.payload.action === 'created' ? 1 : 0;
-            acc.commentsEdited = acc.commentsEdited || 0;
-            acc.commentsEdited += activity.payload.action === 'edited' ? 1 : 0;
-        } else if (activity.type === 'PullRequestEvent') {
-            acc.prsOpened = acc.prsOpened || 0;
-            acc.prsOpened += activity.payload.action === 'opened' ? 1 : 0;
-            acc.prsMerged = acc.prsMerged || 0;
-            acc.prsMerged += activity.payload.action === 'closed' && activity.payload.pull_request.merged ? 1 : 0;
-        } else if (activity.type === 'CreateEvent') {
-            if (activity.payload.ref_type === 'tag') {
-                acc.tags = acc.tags || 0;
-                acc.tags++;
-            } else {
-                acc.branches = acc.branches || 0;
-                acc.branches++;
-            }
+    // Fallback: Generate summary from details
+    if (activityData.details) {
+        const { commits, prsOpened, prsReviewed, comments } = activityData.details;
+        
+        const activities = [];
+        
+        if (commits > 0) {
+            activities.push(`pushed ${commits} commit${commits === 1 ? '' : 's'}`);
         }
-
-        acc[activity.type] = acc[activity.type] || 0;
-        acc[activity.type]++;
-
-        return acc;
-    }, {});
-
-    // End result: I pushed 2 commits and reviewed 1 PR.
-    const activitySummaryString = Object.keys(activitySummary).map((key) => {
-        const value = activitySummary[key];
-        if (key === 'commits' && value) {
-            return `pushed ${value} commit${value === 1 ? '' : 's'}`;
-        } else if (key === 'reviews' && value) {
-            return `reviewed ${value} PR${value === 1 ? '' : 's'}`;
-        } else if (key === 'prsOpened' && value) {
-            return `opened ${value} PR${value === 1 ? '' : 's'}`;
-        } else if (key === 'prsMerged' && value) {
-            return `merged ${value} PR${value === 1 ? '' : 's'}`;
-        } else if (key === 'commentsCreated' && value) {
-            return `made ${value} comment${value === 1 ? '' : 's'}`;
-        // } else if (key === 'commentsEdited' && value) {
-        // 	return `edited ${value} comment${value === 1 ? '' : 's'}`;
-        } else if (key === 'branches' && value) {
-            return `created ${value} branch${value === 1 ? '' : 'es'}`;
-        } else if (key === 'tags' && value) {
-            return `created ${value} tag${value === 1 ? '' : 's'}`;
-        } else {
-            return null;
+        if (prsOpened > 0) {
+            activities.push(`opened ${prsOpened} PR${prsOpened === 1 ? '' : 's'}`);
         }
-    }).filter(Boolean).join(', ');
+        if (prsReviewed > 0) {
+            activities.push(`reviewed ${prsReviewed} PR${prsReviewed === 1 ? '' : 's'}`);
+        }
+        if (comments > 0) {
+            activities.push(`made ${comments} comment${comments === 1 ? '' : 's'}`);
+        }
+        
+        const activitySummaryString = activities.join(', ');
+        
+        return (
+            <div className="text-center">
+                <div className="text-sm text-zinc-600 dark:text-zinc-400">
+                    {activitySummaryString && 'In last 90 days on GitHub I ' + activitySummaryString + ' in public repositories.'}
+                </div>
+            </div>
+        );
+    }
 
+    // Default fallback
     return (
-        <div>
-            <span className="text-sm">
-                {activitySummaryString && 'In last 90 days on GitHub  I ' + activitySummaryString + ' in public repositories.'}
-            </span>
-            {/* {JSON.stringify(recentUserActivity.map(a => a.payload?.review && Object.keys(a.payload?.review).join()), null, 4)} */}
-            {/* {JSON.stringify(Object.keys(recentUserActivity[4]).join(), null, 4)} */}
-            {/* {JSON.stringify(recentUserActivity.filter(a => a.type === 'PullRequestEvent')[2], null, 4)} */}
-            {/* {JSON.stringify(activitySummary, null, 4)} */}
+        <div className="text-center">
+            <div className="text-sm text-zinc-600 dark:text-zinc-400">
+                Actively contributing to open source projects and building innovative solutions.
+            </div>
         </div>
     );
 };

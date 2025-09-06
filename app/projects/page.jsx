@@ -10,10 +10,14 @@ export default async function ProjectsPage(props) {
         customUsername
     } = searchParams;
 
+    // Username can still be used for links or other metadata
     const username = customUsername || process.env.GITHUB_USERNAME || data.githubUsername;
 
+    // Use the static project data from the imported JSON file
+    const projects = data.projects;
+
     return (
-    <div className="relative pb-16 pt-4">
+        <div className="relative pb-16 pt-4">
             <Navigation />
             <div className="px-6 pt-16 mx-auto space-y-8 max-w-7xl lg:px-8 md:space-y-12 md:pt-24 lg:pt-32">
                 <div className="max-w-2xl mx-auto lg:mx-0">
@@ -21,13 +25,13 @@ export default async function ProjectsPage(props) {
                         Projects
                     </h2>
                     <p className="mt-4 text-zinc-400">
-                        {customUsername ? `${customUsername}'s projects` : data.description}
-                        {/* <pre>{JSON.stringify(vercelProjects.projects[1], null, 4)}</pre> */}
+                        Some of the projects I'm most proud of. Check out the code and see how they were built.
                     </p>
                 </div>
 
                 <Suspense fallback={<div className="text-lg text-zinc-500">Loading...</div>}>
-                    <ProjectsComponent username={username} />
+                    {/* Pass the static project data directly to the component */}
+                    <ProjectsComponent username={username} projects={projects} />
                 </Suspense>
             </div>
         </div>

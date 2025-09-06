@@ -10,25 +10,28 @@ const nextConfig = {
         }
     },
     env: {
-        /** GitHub username loaded in build time. */
-        GITHUB_USERNAME: process.env.GH_TOKEN ? await fetch('https://api.github.com/user',
-            {
-                headers: {
-                    Authorization: `token ${process.env.GH_TOKEN}`,
-                },
-                next: {
-                    // No revalidation needed. It is fine to get it on build time and use it forever.
-                    tags: ['github', 'github-username'],
-                }
-            }
-        ).then(res => res.json()).then(data => data.login) : 'testuser',
+        /** GitHub username loaded from static data instead of API */
+        GITHUB_USERNAME: 'HareshKen', // Set directly from your data
     },
     images: {
         remotePatterns: [
             { protocol: 'https', hostname: '**.githubusercontent.com' },
-            { protocol: 'https', hostname: '**.github.com' }
+            { protocol: 'https', hostname: '**.github.com' },
+            { protocol: 'https', hostname: '**.vercel.app' },
+            { protocol: 'https', hostname: '**.netlify.app' },
+            { protocol: 'https', hostname: '**.herokuapp.com' },
+            // Add your own domain if you're hosting images
+            { protocol: 'https', hostname: 'your-domain.com' },
+            // For local development
+            { protocol: 'http', hostname: 'localhost' },
         ],
     },
+    // Optional: Add any other configurations you need
+    compress: true,
+    poweredByHeader: false,
+    // If you want to optimize for static export
+    // output: 'export',
+    // trailingSlash: true,
 };
 
-export default (nextConfig);
+export default nextConfig;

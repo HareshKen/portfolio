@@ -1,168 +1,298 @@
 {
-    "githubUsername": "HareshKen",
-    "avatarUrl": "",
-    "displayName": "Hareshwar",
-    "email": "iitzharesh@gmail.com",
-    "linkedin": "https://www.linkedin.com/in/hareshwar-nv-354b1231a/",
-    "bio": {
-        "intro": "I'm a passionate full-stack developer who loves creating innovative web applications and exploring cutting-edge technologies.",
-        "tagline": "Building the future, one line of code at a time",
-        "aboutMe": "With a strong foundation in modern web technologies, I enjoy turning ideas into reality through clean, efficient code. I'm always eager to learn new technologies and tackle challenging problems.",
-        "currentFocus": "Currently focusing on React, Next.js, and modern web development practices.",
-        "interests": [
-            "Web Development",
-            "Open Source",
-            "UI/UX Design",
-            "Cloud Technologies",
-            "Machine Learning"
-        ]
-    },
-    "skills": {
-        "languages": [
-            "Python",
-            "C",
-            "C++",
-            "Java",
-            "JavaScript",
-            "HTML5",
-            "CSS3",
-            "Verilog"
-        ],
-        "frontend": [
-            "React",
-            "Next.js",
-            "TypeScript",
-            "Tailwind CSS",
-            "JavaScript",
-            "HTML/CSS"
-        ],
-        "backend": [
-            "Node.js",
-            "Python",
-            "Express.js",
-            "MongoDB",
-            "API Development"
-        ],
-        "tools": [
-            "Git",
-            "Docker",
-            "Vercel",
-            "VS Code",
-            "TensorFlow",
-            "Jupyter",
-            "MySQL",
-            "Arduino",
-            "LTspice",
-            "MATLAB",
-            "Intel Quartus Prime",
-            "ModelSim",
-            "TCAD"
-        ],
-        "learning": [
-            "AWS",
-            "GraphQL",
-            "Rust",
-            "Kubernetes",
-            "Web3"
-        ]
-    },
-    "experience": [
-        {
-            "title": "BreatheEasy",
-            "company": "Hackathon Project",
-            "duration": "2025",
-            "description": "Created an generative web AI application which gives medicinal advise based on the collected data using external hardware for chronic disease.",
-            "technologies": [
-                "TypeScript",
-                "Next.js",
-                "Tailwind CSS",
-                "Gemini"
-            ]
-        },
-        {
-            "title": "Computer Vision Developer",
-            "company": "Personal Project",
-            "duration": "2025",
-            "description": "Created an interactive Doom game controlled entirely through hand tracking gestures using computer vision techniques.",
-            "technologies": [
-                "Python",
-                "OpenCV",
-                "MediaPipe",
-                "Pygame",
-                "Hand Tracking"
-            ]
-        },
-        {
-            "title": "Machine Learning Engineer",
-            "company": "CNN model that detects bad leaf spots",
-            "duration": "2024",
-            "description": "Designed and implemented a Convolutional Neural Network model for image classification and pattern recognition tasks.",
-            "technologies": [
-                "Python",
-                "TensorFlow",
-                "Keras",
-                "NumPy",
-                "Pandas"
-            ]
-        },
-        {
-            "title": "Full Stack Developer",
-            "company": "Face Detection Attendence Tool",
-            "duration": "2023 - 2024",
-            "description": "Developed a face detection attendance system with real-time recognition capabilities and database integration.",
-            "technologies": [
-                "Node.js",
-                "Express.js",
-                "MySQL",
-                "Computer Vision"
-            ]
-        },
-        {
-            "title": "Web Developer",
-            "company": "Website for my Father's company",
-            "duration": "2023",
-            "description": "Built a responsive website from scratch using core web technologies, focusing on clean design and user experience.",
-            "technologies": [
-                "HTML",
-                "CSS",
-                "JavaScript"
-            ]
-        },
-        {
-            "title": "OCR Developer",
-            "company": "Personal Project",
-            "duration": "2022",
-            "description": "Developed an Optical Character Recognition system for extracting and digitizing text from images and scanned documents.",
-            "technologies": [
-                "Python",
-                "Tesseract",
-                "OpenCV",
-                "PIL",
-                "Text Processing"
-            ]
-        }
+  "githubUsername": "HareshKen",
+  "avatarUrl": "/fav.jpeg",
+  "displayName": "Hareshwar",
+  "email": "iitzharesh@gmail.com",
+  "linkedin": "https://www.linkedin.com/in/hareshwar-nv-354b1231a/",
+  "description": "A passionate full-stack developer creating innovative web applications",
+  "location": "Chennai, Tamil Nadu, India",
+  "website": "https://hareshken.dev",
+  "twitter": "https://twitter.com/hareshken",
+  "bio": {
+    "intro": "Currently studying in VIT Chennai pursuing BTech Electronics Computer Engineering, 2nd year I'm a passionate full-stack developer who loves creating innovative web applications and exploring cutting-edge technologies.",
+    "tagline": "Building the future, one line of code at a time",
+    "aboutMe": "With a strong foundation in modern web technologies, I enjoy turning ideas into reality through clean, efficient code. I'm always eager to learn new technologies and tackle challenging problems.",
+    "currentFocus": "Currently focusing on React, Next.js, and modern web development practices.",
+    "interests": [
+      "Web Development",
+      "Open Source",
+      "UI/UX Design",
+      "Cloud Technologies",
+      "Machine Learning"
+    ]
+  },
+  "skills": {
+    "languages": [
+      "Python",
+      "C",
+      "C++",
+      "Java",
+      "JavaScript",
+      "HTML5",
+      "CSS",
+      "Verilog"
     ],
-    "stats": {
-        "projectsCompleted": 6,
-        "yearsOfExperience": 3,
-        "technologiesUsed": 15,
-        "openSourceContributions": 10
+    "frontend": [
+      "React",
+      "Next.js",
+      "Tailwind CSS",
+      "JavaScript",
+      "HTML/CSS"
+    ],
+    "backend": [
+      "Node.js",
+      "Python",
+      "Express.js",
+      "MySQL",
+      "API Development"
+    ],
+    "tools": [
+      "Git",
+      "Docker",
+      "Vercel",
+      "VS Code",
+      "TensorFlow",
+      "Jupyter",
+      "MySQL",
+      "Arduino",
+      "LTspice",
+      "MATLAB",
+      "Intel Quartus Prime",
+      "ModelSim"
+    ],
+    "learning": [
+      "AWS",
+      "GraphQL",
+      "Rust",
+      "Kubernetes",
+      "Web3",
+      "DevOps",
+      "Microservices"
+    ]
+  },
+  "experience": [
+    {
+      "title": "BreatheEasy",
+      "company": "Hackathon Project",
+      "duration": "2025",
+      "description": "Created a generative web AI application which gives medicinal advice based on collected data using external hardware for chronic disease monitoring.",
+      "technologies": [
+        "TypeScript",
+        "Next.js",
+        "Tailwind CSS",
+        "Gemini AI",
+        "IoT"
+      ]
     },
-    "projects": {
-        "blacklist": [],
-        "heroNames": [],
-        "featured": [
-            {
-                "name": "Portfolio Website",
-                "description": "A modern, responsive portfolio website built with Next.js and Tailwind CSS",
-                "technologies": [
-                    "Next.js",
-                    "Tailwind CSS",
-                    "TypeScript"
-                ],
-                "link": "https://github.com/HarehKen/portfolio",
-                "demo": "https://yourportfolio.vercel.app"
-            }
-        ]
+    {
+      "title": "Computer Vision Developer",
+      "company": "Personal Project",
+      "duration": "2025",
+      "description": "Created an interactive Doom game controlled entirely through hand tracking gestures using computer vision techniques.",
+      "technologies": [
+        "Python",
+        "OpenCV",
+        "MediaPipe",
+        "Pygame",
+        "Hand Tracking"
+      ]
+    },
+    {
+      "title": "Machine Learning Engineer",
+      "company": "CNN Model for Plant Disease Detection",
+      "duration": "2024",
+      "description": "Designed and implemented a Convolutional Neural Network model for detecting bad leaf spots in plants, achieving 94% accuracy.",
+      "technologies": [
+        "Python",
+        "TensorFlow",
+        "Keras",
+        "NumPy",
+        "Pandas",
+        "OpenCV"
+      ]
+    },
+    {
+      "title": "Full Stack Developer",
+      "company": "Face Detection Attendance System",
+      "duration": "2023 - 2024",
+      "description": "Developed a real-time face detection attendance system with database integration and admin dashboard for educational institutions.",
+      "technologies": [
+        "Node.js",
+        "Express.js",
+        "MySQL",
+        "Computer Vision",
+        "React",
+        "OpenCV"
+      ]
+    },
+    {
+      "title": "Web Developer",
+      "company": "Corporate Website Development",
+      "duration": "2023",
+      "description": "Built a responsive business website from scratch using core web technologies, focusing on clean design and optimal user experience.",
+      "technologies": [
+        "HTML5",
+        "CSS3",
+        "JavaScript",
+        "Responsive Design"
+      ]
+    },
+    {
+      "title": "OCR Developer",
+      "company": "Personal Project",
+      "duration": "2022",
+      "description": "Developed an Optical Character Recognition system for extracting and digitizing text from images and scanned documents with 92% accuracy.",
+      "technologies": [
+        "Python",
+        "Tesseract",
+        "OpenCV",
+        "PIL",
+        "Text Processing"
+      ]
     }
+  ],
+  "stats": {
+    "projectsCompleted": 6,
+    "yearsOfExperience": 3,
+    "technologiesUsed": 25,
+    "openSourceContributions": 10
+  },
+  "projects": {
+    "featured": [
+      {
+        "id": "breathe-easy",
+        "name": "BreatheEasy",
+        "description": "AI-powered healthcare application for chronic disease monitoring with IoT integration and real-time health analytics.",
+        "longDescription": "A comprehensive healthcare solution that combines IoT sensors, machine learning, and web technologies to monitor chronic diseases. Features real-time data collection, predictive analytics, and personalized health recommendations.",
+        "technologies": [
+          "Next.js",
+          "TypeScript",
+          "Tailwind CSS",
+          "Gemini AI",
+          "IoT",
+          "Python",
+          "TensorFlow"
+        ],
+        "github": "https://github.com/HareshKen/BreatheEasy",
+        "status": "completed",
+        "featured": true,
+        "created_at": "2025-01-15",
+        "updated_at": "2025-01-20",
+        "category": "Healthcare"
+      },
+      {
+        "id": "hand-controlled-doom",
+        "name": "Hand-Controlled Doom",
+        "description": "Interactive gaming experience using computer vision and hand tracking technology to control classic Doom gameplay.",
+        "longDescription": "Revolutionary gaming interface that transforms hand gestures into game controls. Uses MediaPipe for real-time hand tracking and custom gesture recognition algorithms.",
+        "technologies": [
+          "Python",
+          "OpenCV",
+          "MediaPipe",
+          "Pygame",
+          "Computer Vision"
+        ],
+        "github": "https://github.com/HareshKen/doom",
+        "status": "completed",
+        "featured": true,
+        "stats": {
+          "stars": 89,
+          "forks": 23,
+          "watchers": 15,
+          "issues": 2
+        },
+        "created_at": "2024-11-10",
+        "updated_at": "2025-01-05",
+        "category": "Gaming"
+      },
+      {
+        "id": "plant-disease-detection",
+        "name": "Plant Disease Detection",
+        "description": "CNN-based machine learning model for identifying plant diseases from leaf images with 94% accuracy.",
+        "longDescription": "Deep learning solution for agricultural applications using convolutional neural networks to detect various plant diseases. Includes web interface for farmers and gardeners.",
+        "technologies": [
+          "Python",
+          "TensorFlow",
+          "Keras",
+          "OpenCV",
+          "Flask",
+          "NumPy"
+        ],
+        "github": "https://github.com/HareshKen/rice-leaf-disease-classifier",
+        "status": "completed",
+        "featured": true,
+        "stats": {
+          "stars": 67,
+          "forks": 19,
+          "watchers": 11,
+          "issues": 5
+        },
+        "created_at": "2024-08-20",
+        "updated_at": "2024-12-15",
+        "category": "Machine Learning"
+      },
+      {
+        "id": "face-attendance-system",
+        "name": "Face Recognition Attendance",
+        "description": "Real-time face detection and recognition system for automated attendance management in educational institutions.",
+        "longDescription": "Comprehensive attendance management solution with facial recognition, admin dashboard, student management, and detailed reporting features.",
+        "technologies": [
+          "Node.js",
+          "Express.js",
+          "MySQL",
+          "React",
+          "OpenCV",
+          "Python"
+        ],
+        "github": "https://github.com/HareshKen/face-attendence",
+        "status": "completed",
+        "featured": true,
+        "stats": {
+          "stars": 34,
+          "forks": 15,
+          "watchers": 7,
+          "issues": 4
+        },
+        "created_at": "2023-09-12",
+        "updated_at": "2024-05-20",
+        "category": "Education"
+      }
+    ],
+    "other": [
+
+    ],
+    "blacklist": ["deprecated-project", "old-experiments"],
+    "heroNames": ["breathe-easy", "hand-controlled-doom", "plant-disease-detection", "face-attendance-system"]
+  },
+  "socialLinks": [
+    {
+      "name": "GitHub",
+      "url": "https://github.com/HareshKen",
+      "icon": "github",
+      "handle": "@HareshKen"
+    },
+    {
+      "name": "LinkedIn",
+      "url": "https://www.linkedin.com/in/hareshwar-nv-354b1231a/",
+      "icon": "linkedin",
+      "handle": "hareshwar-nv"
+    },
+    {
+      "name": "Email",
+      "url": "mailto:iitzharesh@gmail.com",
+      "icon": "email",
+      "handle": "iitzharesh@gmail.com"
+    }
+  ],
+  "recentActivity": {
+    "summary": "In the last 90 days, I pushed 45 commits, opened 8 PRs, reviewed 12 PRs, and made 23 comments in public repositories.",
+    "details": {
+      "commits": 45,
+      "prsOpened": 8,
+      "prsReviewed": 12,
+      "comments": 23,
+      "repositories": 6,
+      "languages": ["JavaScript", "Python", "TypeScript"]
+    }
+  }
 }
